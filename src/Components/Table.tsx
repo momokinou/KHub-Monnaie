@@ -1,42 +1,26 @@
-import { Navbar, Table, Text } from "@mantine/core";
+import { Checkbox, Navbar, Table, Text } from "@mantine/core";
 import { useContext, useState } from "react";
 
 function CustomTable() {
 
     const elements = [
-        { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-        { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-        { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-        { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-        { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-        { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-        { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-        { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-        { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-        { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-        { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-        { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-        { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-        { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-        { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-        { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-        { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-        { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-        { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-        { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-        { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-        { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-        { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-        { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-        { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
+        {
+          "id": 1,
+          "name": "casserole",
+          "montant": 30.3,
+          "useless": false,
+          "category": "cuisine",
+          "buyDate": "2014-06-25T00:00:00.000Z"
+        }
       ];
 
       const rows = elements.map((element) => (
-        <tr key={element.name}>
-          <td>{element.position}</td>
+        <tr key={element.id}>
           <td>{element.name}</td>
-          <td>{element.symbol}</td>
-          <td>{element.mass}</td>
+          <td>{element.montant}</td>
+          <td>{element.category}</td>
+          <td>{element.buyDate}</td>
+          <td><Checkbox checked={element.useless}/></td>
         </tr>
       ));
     
@@ -44,10 +28,11 @@ function CustomTable() {
         <Table>
           <thead>
             <tr>
-              <th>Element position</th>
-              <th>Element name</th>
-              <th>Symbol</th>
-              <th>Atomic mass</th>
+              <th>Nom</th>
+              <th>Montant</th>
+              <th>Catégorie</th>
+              <th>Date</th>
+              <th>Inutile?</th>
             </tr>
           </thead>
           <tbody>{rows}</tbody>

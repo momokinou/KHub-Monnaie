@@ -1,0 +1,8 @@
+[{
+    "id": 1,
+    "name": "casserole",
+    "montant": 30.3,
+    "useless": false,
+    "category": "cuisine",
+    "buyDate": "2014-06-25T00:00:00.000Z"
+  }]

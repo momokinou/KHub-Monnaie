@@ -27,7 +27,7 @@ function Home() {
             style={theme}
         >
         {
-            <><WebsiteInput /><TwitterButton /></>
+            <><CustomTable /></>
         }
         </AppShell>
         </NavbarIsOpened.Provider>
