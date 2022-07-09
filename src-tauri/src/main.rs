@@ -3,6 +3,8 @@
   windows_subsystem = "windows"
 )]
 
+use tauri_plugin_sql::{Migration, MigrationKind, TauriSql};
+
 fn main() {
   let context = tauri::generate_context!();
   tauri::Builder::default()
@@ -11,6 +13,23 @@ fn main() {
     } else {
       tauri::Menu::default()
     })
+    .plugin(TauriSql::default().add_migrations(
+      "sqlite:KHub.db",
+      vec![
+        Migration {
+          version: 1,
+          description: "create and fill category table",
+          sql: include_str!("../migrations/category.sql"),
+          kind: MigrationKind::Up,
+        },
+        Migration {
+          version: 1,
+          description: "create purchases table",
+          sql: include_str!("../migrations/achat.sql"),
+          kind: MigrationKind::Up,
+        },
+      ]
+    ))
     .run(context)
     .expect("error while running tauri application");
 }
